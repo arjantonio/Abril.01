@@ -18,8 +18,8 @@ dim(info_data)
 info_data$Size <- as.numeric(info_data$Size)
 info_data$Method2 <- str_sub(info_data$Method, 2)
 info_data$Method2 <- as.factor(info_data$Method2)
-info_data$Fecha01 <- strptime(info_data$Timestamp, format = "[%d:%H:%M:%S]")
-info_data$Fecha02 <- str_sub(info_data$Fecha01, -8)
+info_data$Formatted_date <- as.POSIXlt(info_data$Timestamp,format="[%d:%H:%M:%OS]")
+info_data$Fecha02 <- str_sub(info_data$Formatted_date, -8)
 # Pregunta 01 -b
 # Valor medio de la Columna Byte
 summary(info_data$Size)
@@ -40,3 +40,15 @@ total_ips
 # Ext_edu <- info_data[grepl(".edu", info_data$Directions), ]
 # Ext_edu
 
+#PREGUNTA 3
+# Se realiza el filtro para GET
+get_method <- filter(info_data, str_detect(info_data$Method2, "GET"))
+View(get_method)
+# Escogiendo las columnas method2 y Formatted_date 
+method_data <- select(get_method,Method2,Formatted_date )
+# Obteniendo la hora
+method_data$Hora <- method_data$Formatted_date$hour
+# Realizando el conteo y ordenando de mayor a menor
+hour_max <- count(method_data, Hora, sort = TRUE)
+hour_max
+# El resultado es a las 14 horas (2:00 pm) con  4546 peticiones
