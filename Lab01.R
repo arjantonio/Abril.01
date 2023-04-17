@@ -15,10 +15,18 @@ dim(info_data)
 # El resultado de la pregunta 1 es 47748 filas y  7 columnas
 
 # Configuraciones
-info_data$Siza <- as.numeric(info_data$Size)
+info_data$Size <- as.numeric(info_data$Size)
 info_data$Method2 <- str_sub(info_data$Method, 2)
 info_data$Method2 <- as.factor(info_data$Method2)
 info_data$Fecha01 <- strptime(info_data$Timestamp, format = "[%d:%H:%M:%S]")
 info_data$Fecha02 <- str_sub(info_data$Fecha01, -8)
+# Pregunta 01 -b
+# Valor medio de la Columna Byte
+summary(info_data$Size)
+# Resultado: 7352
+#      Min. 1st Qu.  Median    Mean   3rd Qu.    Max.     NA's 
+      #  0     231    1260    7352    3223     4816896    5331 
 
+# Pregunta 02
+# Cuantas pertenecen a ".edu"
 
