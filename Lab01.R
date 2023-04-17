@@ -52,3 +52,20 @@ method_data$Hora <- method_data$Formatted_date$hour
 hour_max <- count(method_data, Hora, sort = TRUE)
 hour_max
 # El resultado es a las 14 horas (2:00 pm) con  4546 peticiones
+
+#Pregunta 4
+# Bytes tx de .txt de (.edu)
+Edu <- info_data[grepl(".edu", info_data$Directions), ]
+Txt <- Edu[grepl(".txt", Edu$Resource), ]
+sum(Txt$Size, na.rm=TRUE)
+
+# Bytes transmitidos: 3017871
+
+# Pregunta 5
+#Cuantas peticiones buscan la URL: "/"
+info_data$Resource <- as.factor(info_data$Resource)
+Peticiones <- info_data[grepl("^/$", info_data$Resource), ]
+summary(Peticiones)
+# 2382
+
+#Pregunta 6
