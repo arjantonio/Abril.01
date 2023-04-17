@@ -20,6 +20,7 @@ info_data$Method2 <- str_sub(info_data$Method, 2)
 info_data$Method2 <- as.factor(info_data$Method2)
 info_data$Formatted_date <- as.POSIXlt(info_data$Timestamp,format="[%d:%H:%M:%OS]")
 info_data$Fecha02 <- str_sub(info_data$Formatted_date, -8)
+info_data$Protocol <- as.factor(info_data$Protocol)
 # Pregunta 01 -b
 # Valor medio de la Columna Byte
 summary(info_data$Size)
@@ -69,3 +70,8 @@ summary(Peticiones)
 # 2382
 
 #Pregunta 6
+#summary(info_data)
+# Hallando los protocoloes que no tiene http/0.2
+http1_total <- sum(!str_detect(info_data$Protocol, "HTTP/0.2"))
+http1_total
+# El resultado es 47747
