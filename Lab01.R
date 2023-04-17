@@ -9,8 +9,16 @@ info_data <- read_table("D:/epa-http.csv", col_names = FALSE)
 colnames(info_data) <- c("Directions", "Timestamp", "Method", "Resource", "Protocol", "Response Code", "Size")
 
 View(info_data)
+# Pregunta 1
+# 1. Hallando las columnas y filas
+dim(info_data)
+# El resultado de la pregunta 1 es 47748 filas y  7 columnas
+
+# Configuraciones
 info_data$Siza <- as.numeric(info_data$Size)
 info_data$Method2 <- str_sub(info_data$Method, 2)
 info_data$Method2 <- as.factor(info_data$Method2)
 info_data$Fecha01 <- strptime(info_data$Timestamp, format = "[%d:%H:%M:%S]")
 info_data$Fecha02 <- str_sub(info_data$Fecha01, -8)
+
+
