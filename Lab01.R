@@ -29,4 +29,14 @@ summary(info_data$Size)
 
 # Pregunta 02
 # Cuantas pertenecen a ".edu"
+# Validando quienes tienen la extensión .edu
+edu_ips <- str_count(info_data$Directions, ".edu")
+
+# Hallando el n° de ips con extension edu
+total_ips <- sum(edu_ips)
+total_ips
+# El resultado de las ips que contienen edu es 6539
+# Otra forma de hallar las ips con extension .edu
+# Ext_edu <- info_data[grepl(".edu", info_data$Directions), ]
+# Ext_edu
 
