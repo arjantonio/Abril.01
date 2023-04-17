@@ -67,7 +67,10 @@ sum(Txt$Size, na.rm=TRUE)
 info_data$Resource <- as.factor(info_data$Resource)
 Peticiones <- info_data[grepl("^/$", info_data$Resource), ]
 summary(Peticiones)
-# 2382
+# El resultado es 2382
+# Otra forma
+# sum(str_detect(request_data$Resource2, "^/$"))
+
 
 #Pregunta 6
 #summary(info_data)
