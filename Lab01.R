@@ -31,12 +31,12 @@ summary(info_data$Size)
 # Pregunta 02
 # Cuantas pertenecen a ".edu"
 # Validando quienes tienen la extensión .edu
-edu_ips <- str_count(info_data$Directions, ".edu")
+edu_ips <- str_count(info_data$Directions, "\\.edu")
 
 # Hallando el n° de ips con extension edu
 total_ips <- sum(edu_ips)
 total_ips
-# El resultado de las ips que contienen edu es 6539
+# El resultado de las ips que contienen edu es 6524
 # Otra forma de hallar las ips con extension .edu
 # Ext_edu <- info_data[grepl(".edu", info_data$Directions), ]
 # Ext_edu
@@ -56,11 +56,16 @@ hour_max
 
 #Pregunta 4
 # Bytes tx de .txt de (.edu)
-Edu <- info_data[grepl(".edu", info_data$Directions), ]
-Txt <- Edu[grepl(".txt", Edu$Resource), ]
+Edu <- info_data[grepl("\\.edu", info_data$Directions), ]
+# Validación para solo filtrar .txt
+Txt <- Edu[grepl("\\.txt", Edu$Resource), ]
 sum(Txt$Size, na.rm=TRUE)
+# Bytes transmitidos: 2705408
 
-# Bytes transmitidos: 3017871
+# Para validaciones .txt al final se usa lo siguiente
+txt_data <- filter(Edu, str_detect(Edu$Resource, "\\.txt$"))
+sum(na.omit(txt_data$Size))
+# bytes transmitidos:106806
 
 # Pregunta 5
 #Cuantas peticiones buscan la URL: "/"
