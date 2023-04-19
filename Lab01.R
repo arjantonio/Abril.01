@@ -24,6 +24,8 @@ info_data$Protocol <- as.factor(info_data$Protocol)
 # Pregunta 01 -b
 # Valor medio de la Columna Byte
 summary(info_data$Size)
+medium_value <- mean(info_data$Size, na.rm = TRUE)
+medium_value
 # Resultado: 7352
 #      Min. 1st Qu.  Median    Mean   3rd Qu.    Max.     NA's 
       #  0     231    1260    7352    3223     4816896    5331 
